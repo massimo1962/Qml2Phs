@@ -1,0 +1,85 @@
+
+Questo tool permette la conversione del formato QuakeML in Phs.
+E' possibile, attraverso l'impostazione dei parametri di query, impostare 
+la richiesta dal WS scelto (il primo della lista nella sezione 'Preferences').
+ 
+Attualmente (v.0.3) e' possibile scegliere anche la versione dell'evento 
+(preferred per default) ma solo per i WS di INGV.
+
+Di seguito i valori consentiti per i parametri di query; 
+è da notare che non tutti i ws dei vari fornitori (es. USGS, IRIS, et..) 
+accettano tutti i paramentri.
+
+
+ Query Parameters
+
+ Detailed Descriptions of each Query Parameter
+
+    Geographic constraints - bounding rectangle
+
+        minlat: 39.0	| Southern boundary. (-90° if unspecified)
+
+        maxlat: 42.0	| Northern boundary. (90° if unspecified)
+
+        minlon: 10.0	| Western boundary. (-180° if unspecified
+
+        maxlon: 12.0	| Eastern boundary. (180° if unspecified)
+
+
+    Geographic constraints - bounding radius 
+
+        lat: 42.5          | Southern boundary. (-90° if unspecified)
+
+        lon: 13.0          | Northern boundary. (90° if unspecified)
+
+        maxradius: 5.0     | Specify the search radius, in decimal degrees.
+
+        minradius: 1.0     | optional - Exclude events closer than minradius degrees from the specified location.
+
+    This must be used in conjunction with the lat, lon, and maxradius/maxradiuskm parameters.
+
+    Depth constraints
+
+        mindepth: -1   | Specify minimum depth (kilometers), values increase positively with depth
+
+        maxdepth: 20   | Specify maximum depth (kilometers), values increase positively with depth
+
+
+    Temporal constraints
+
+        starttime: 2012-05-21T00:00:00	| Limit results to the events occurring after the specified start time.
+
+        endtime: 2011-05-25T23:59:59	| Limit results to the events occurring before the specified end time.
+
+
+    Magnitude constraints (see also the section below: "INGV extensions to the formal FDSN specifications")
+
+        minmag: 0.0	        | Specify a minimum magnitude.
+
+        maxmag: 7.4	        | Specify a maximum magnitude.
+
+
+    Miscelleneous parameters
+
+        updatedafter: 2014-05-23T00:00:00       | Limit to events updated after the specified time (useful for synchronizing events).
+
+        includeallorigins: true			| Can be either true or false. Default is false. 
+        						Is used to retrive all origins associated with each event.
+
+        includeallmagnitudes: true		| Can be either true or false. Default is false. 
+        						Is used to retrive all magnitudes associated with each event.
+
+        includeallstationsmagnitudes: true	| Can be either true or false. Default is false. 
+        						Is used to retrive all stations magnitudes associated with each hypocenter.
+
+        includearrivals: true			| Can be either true or false. Default is false. 
+        						Is used to retrive any associated phase arrival information for each event.
+
+        orderby: time-asc                       | Can be either time, time-asc, magnitude and magnitude-asc. Default is time.
+                                                        Is used to order the output.
+
+        limit: 20                               | Can be an integer value. Default is 4000.
+                                                        Is used to limit the results to the specified number of events.
+                                                        
+        eventversion: 0,1,2,100,1000, preferred   | Event version can be selected via this parameter (only INGV WS)                                              
+
